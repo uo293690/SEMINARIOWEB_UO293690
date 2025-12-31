@@ -1,0 +1,27 @@
+name: Deno CI/CD Pipeline
+
+on:
+  push:
+  
+
+jobs:
+  # Job 1: Verificación de Calidad
+  check-quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name:  Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name:  Instalar Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x 
+
+      - name:  Verificar formato
+        run: deno fmt --check
+
+      - name:  Linting
+        run: deno lint
+
+      - name:  Ejecutar Tests
+        run: deno test --allow-net
