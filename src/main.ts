@@ -1,6 +1,6 @@
 const PORT = 8000;
 
-const handler = async (req: Request): Promise<Response> => {
+const handler =  (req: Request): Response => {
   const url = new URL(req.url);
 
   // Endpoint de API (Backend)
